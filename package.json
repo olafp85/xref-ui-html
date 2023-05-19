@@ -1,0 +1,21 @@
+{
+  "name": "xref-ui-html",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Xref HTML frontend",
+  "main": "webapp/index.html",
+  "devDependencies": {
+    "@sap/ux-ui5-tooling": "^1.9.2",
+    "@ui5/cli": "^2.14.17",
+    "ftp-deploy": "^2.4.3"
+  },
+  "scripts": {
+    "start": "fiori run --open \"index.html\"",
+    "deploy": "node deploy"
+  },
+  "ui5": {
+    "dependencies": [
+      "@sap/ux-ui5-tooling"
+    ]
+  }
+}

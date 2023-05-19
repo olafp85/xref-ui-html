@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Xref</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <meta charset="utf-8">
+
+  <!-- Cross references -->
+  <link rel="stylesheet" href="style.css">
+  <script src="xref.js"></script>
+
+  <!-- Cytoscape for graph analysis and visualization -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.17.1/cytoscape.min.js"></script>
+
+  <!-- Cytoscape Cola extension -->
+  <script src="https://cdn.jsdelivr.net/npm/webcola@3.4.0/WebCola/cola.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cola@2.4.0/cytoscape-cola.min.js"></script>
+
+  <!-- Cytoscape Cose bilkent extension -->
+  <script src="https://unpkg.com/layout-base/layout-base.js"></script>
+  <script src="https://unpkg.com/cose-base/cose-base.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.1.0/cytoscape-cose-bilkent.min.js"></script>
+
+  <!-- Icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header>
+    <!-- Object -->
+    <div class="label-object">
+      <label for="object">Object</label>
+    </div>
+    <div class="object">
+      <select name="object" id="object"> </select>
+    </div>
+    <!-- Condense -->
+    <div class="label-condense">
+      <label for="condenseSlider">Condense</label>
+    </div>
+    <div class="condense">
+      <input is="slider-with-tickmarks" type="range" min="0" max="0" value="0" id="condenseSlider">
+    </div>
+
+    <!-- Scope -->
+    <div class="scope">
+      <fieldset id="scope">
+        <input type="radio" name="scope" id="scope-all" value="all" checked>
+        <label for="scope-all">All</label>
+        <input type="radio" name="scope" id="scope-internal" value="internal">
+        <label for="scope-internal">Internal</label>
+        <input type="radio" name="scope" id="scope-external" value="external">
+        <label for="scope-external">External</label>
+      </fieldset>
+    </div>
+
+    <!-- SAP calss -->
+    <div class="sap-calls">
+      <label for="sap-calls">SAP calls</label>
+      <input type="checkbox" id="sap-calls" checked>
+    </div>
+
+    <!-- Selection -->
+    <div class="label-selection">
+      <label for="selection">Selection</label>
+    </div>
+    <div class="selection">
+      <input type="text" id="selection" spellcheck="false" size="60em" list="nodes">
+      <datalist id="nodes"></datalist>
+    </div>
+
+    <!-- In/out length -->
+    <div class="label-in-length">
+      <label for="inLengthSlider">In/out length</label>
+    </div>
+    <div class="in-length">
+      <input is="slider-with-tickmarks" type="range" id="inLengthSlider" max="0">
+    </div>
+    <div class="out-length">
+      <input is="slider-with-tickmarks" type="range" id="outLengthSlider" max="0">
+    </div>
+
+    <!-- Edge length -->
+    <div class="label-edge-length">
+      <label for=edgeLength>Edge length</label>
+    </div>
+    <div class="edge-length">
+      <input is="slider-with-tickmarks" type="range" id="edgeLength" value="0" min="0" max="5">
+    </div>
+
+    <!-- Highlight -->
+    <div class="highlight">
+      <fieldset id="highlight">
+        <input type="radio" name="highlight" id="highlight-on" checked>
+        <label for="highlight-on">Highlight</label>
+        <input type="radio" name="highlight" id="highlight-off">
+        <label for="highlight-off">Subgraph</label>
+      </fieldset>
+    </div>
+
+    <!-- Labels -->
+    <div class="labels">
+      <label for="labels">Labels</label>
+      <input type="checkbox" id="labels">
+    </div>
+
+    <!-- Spring -->
+    <div class="spring">
+      <label for="spring">Spring</label>
+      <input type="checkbox" id="spring">
+    </div>
+  </header>
+
+  <article>
+    <!-- Cytoscape graph -->
+    <div id="cy"></div>
+    <div id="loading">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+
+  </article>
+
+  <template id="svg-template">
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <style xmlns="http://www.w3.org/1999/xhtml">
+        table {
+          font-family: sans-serif;
+          font-size: x-small;
+          padding: 2px;
+        }
+
+        tr:last-child td:last-child {
+          font-size: medium;
+        }
+
+        td {
+          padding: 0px 2px;
+        }
+      </style>
+      <foreignObject width="100%" height="100%">
+        <table xmlns="http://www.w3.org/1999/xhtml" />
+      </foreignObject>
+    </svg>
+  </template>
+</body>
+
+</html>

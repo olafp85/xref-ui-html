@@ -1,0 +1,52 @@
+node {
+  shape: ellipse;
+  border-width: 1;
+  border-color: grey; 
+  width: 10;
+  height: 10;
+  background-color: lightgrey;
+}
+
+node.labels {
+  shape: round-rectangle;
+  border-width: 1;
+  border-color: grey; 
+  width: data(image.width);
+  height: data(image.height);
+  background-image: data(image.data);
+  background-fit: contain;
+  background-color: lightyellow;
+}
+
+node[?sap] {
+  background-color: lightblue;
+}
+
+node.not-path {
+  opacity: 0.5;
+}
+
+node.not-path.subgraph {
+  display: none; 
+}
+
+node:selected {
+  display: element;
+  border-color: red;
+}
+
+edge {
+  width: 1px;
+  curve-style: bezier;
+  line-color: lightgrey;
+  target-arrow-shape: triangle;
+  target-arrow-color: grey;
+}
+
+edge.path.highlight {
+  line-color: red;
+}
+
+edge.not-path {
+  opacity: 0.5;
+}

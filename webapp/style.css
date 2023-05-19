@@ -1,0 +1,94 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    background-color: floralwhite;
+}
+
+header, article {
+    background: white;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+header {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto 1fr;
+    grid-auto-rows: 1.8em;
+    padding: .5em;
+    grid-column-gap: 10px;
+    align-items: center;
+    font-family: "Helvetica", sans-serif;
+    font-size: 0.8em;
+}
+
+article {
+    margin-top: 0;
+    flex-grow: 1;
+}
+
+div[class|="label"] {
+    grid-column: 1;
+}
+
+div.object {
+    grid-column: 2 / span 2;
+}
+
+div.object>select {
+    width: 100%;
+}
+
+div.selection {
+    grid-column: 2 / span 4;
+}
+
+div.sap-calls {
+    grid-column: 4 / span 2;
+}
+
+fieldset {
+    border: 1px solid #1479fb;
+    border-radius: 4px;
+    display: inline;
+    padding: 0px;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+input[type=radio]+label {
+    display: table-cell;
+    padding: 1px 4px;
+}
+
+input[type=radio]:checked+label {
+    background-color: #1479fb;
+}
+
+#cy {
+    width: 100%;
+    height: 100%;
+}
+
+#loading {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+    color: darkgray;
+    visibility: hidden;
+}
+
+body.loading #cy {
+    visibility: hidden;
+}
+
+body.loading #loading {
+    visibility: visible;
+}
