@@ -138,14 +138,14 @@ function importXref(xref) {
 }
 
 function importXrefs(xrefs) {
-  let objects = xrefs.map(({ id, name }) => ({ id, name }));
-  objects.sort((a, b) => a.name.localeCompare(b.name));
+  let objects = xrefs.map(({ id, type, name }) => ({ id, text: `${type.toLowerCase()} ${name}` }));
+  objects.sort((a, b) => a.text.localeCompare(b.text));
   const objectSelector = document.getElementById('object');
   objectSelector.add(document.createElement("option"));
   for (let object of objects) {
     let option = document.createElement("option");
     option.value = object.id;
-    option.text = object.name;
+    option.text = object.text;
     objectSelector.add(option);
   }
 }
